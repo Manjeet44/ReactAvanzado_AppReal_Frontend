@@ -1,9 +1,10 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, gql, useMutation } from '@apollo/client';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import Swal from 'sweetalert2';
 
 const OBTENER_CLIENTE = gql`
     query obtenerCliente($id:ID!) {
@@ -16,6 +17,19 @@ const OBTENER_CLIENTE = gql`
         }
     }
 `;
+
+const ACTUALIZAR_CLIENTE = gql`
+    mutation actualizarCliente($id: ID!, $input: ClienteInput){
+        actualizarCliente(id: $id, input: $input) {
+            nombre
+            apellido
+            email
+            telefono
+            empresa
+        }
+    }
+`;
+    
 
 
 const EditarCliente = () => {
@@ -31,6 +45,8 @@ const EditarCliente = () => {
         }
     });
     
+    //Actualizar cliente
+    const [actualizarCliente] = useMutation(ACTUALIZAR_CLIENTE);
 
     //Schema de validacion
     const schemaValidacion = Yup.object({
@@ -47,6 +63,35 @@ const EditarCliente = () => {
 
     const {obtenerCliente} = data;
 
+    //Modifica el cliente en la BD
+    const actualizarInfoCliente = async valores => {
+        const {nombre, apellido, empresa, email, telefono} = valores;
+
+        try {
+            const {data} = await actualizarCliente({
+                variables: {
+                    id,
+                    input: {
+                        nombre,
+                        apellido,
+                        empresa,
+                        email,
+                        telefono
+                    }
+                }
+            });
+            //console.log(data);
+            Swal.fire(
+                'Actualizado!',
+                'El Cliente se actualizo Correctamente',
+                'success'
+            )
+            router.push('/');
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
   return (
       <Layout>
         <h1 className='text-2xl text-gray-800 font-light'>Editar cliente</h1>
@@ -56,8 +101,8 @@ const EditarCliente = () => {
                 validationSchema={schemaValidacion}
                 enableReinitialize
                 initialValues={obtenerCliente}
-                onSubmit={() => {
-                    console.log('Enviando')
+                onSubmit={(valores) => {
+                    actualizarInfoCliente(valores)
                 }}
             >
                 {props => {
