@@ -33,6 +33,7 @@ const NuevoProducto = () => {
     //Mutation
     const [nuevoProducto] = useMutation(NUEVO_PRODUCTO, {
         update(cache, {data: {nuevoProducto}}) {
+            if(cache.data.data.ROOT_QUERY.obtenerProductos) {
             //obtener objeto de cache
             const {obtenerProductos} = cache.readQuery({query: OBTENER_PRODUCTOS});
 
@@ -42,7 +43,8 @@ const NuevoProducto = () => {
                 data: {
                     obtenerProductos: [...obtenerProductos, nuevoProducto]
                 }
-            })
+            });
+            }
         }
     });
     //Formulario para nuevos prodcutos
