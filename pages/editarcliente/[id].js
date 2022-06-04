@@ -35,7 +35,7 @@ const ACTUALIZAR_CLIENTE = gql`
 const EditarCliente = () => {
     //obtener el id actual
     const router = useRouter();
-    const { query:  {pid: id }} = router;
+    const { query:  {id }} = router;
     
 
     //Consultar para obtener el cliente
