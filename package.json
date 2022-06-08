@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.5",
+    "@apollo/client": "^3.6.6",
     "apollo-link-context": "^1.0.20",
     "formik": "^2.2.9",
     "graphql": "^16.5.0",
