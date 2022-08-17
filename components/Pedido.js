@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useMutation, gql, useQuery } from '@apollo/client';
+import { useMutation, gql} from '@apollo/client';
 import Swal from 'sweetalert2';
 
 const ACTUALIZAR_PEDIDO = gql`
@@ -51,6 +51,7 @@ const Pedido = ({pedido}) => {
             setEstadoPedido(estadoPedido);
         }
         clasePedido();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [estadoPedido]);
 
     //Funcion que modifica el color del pedido de acuerdo a su estado

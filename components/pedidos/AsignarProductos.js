@@ -25,7 +25,8 @@ const AsignarProductos = () => {
 
 
     useEffect(() => {
-        agregarProducto(productos)
+        agregarProducto(productos);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
      }, [productos])
 
     const seleccionarProducto = producto => {

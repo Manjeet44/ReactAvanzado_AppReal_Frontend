@@ -12,7 +12,7 @@ const Layout = ({children}) => {
         <Head>
             <title>CRM - Administracion de Clientes</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossOrigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com" async></script>
         </Head>
         {router.pathname === '/login' || router.pathname === '/nuevacuenta' ? (
             <div className='bg-gray-800 min-h-screen flex flex-col justify-center'>
