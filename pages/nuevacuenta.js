@@ -178,6 +178,9 @@ const NuevaCuenta = () => {
                         />
 
                     </form>
+                    <div className='text-center'>
+                        <a href='/login' className='text-white'>Ya tienes cuenta? Iniciar Sesion!</a>
+                    </div>
                 </div>
             </div>
         </Layout>

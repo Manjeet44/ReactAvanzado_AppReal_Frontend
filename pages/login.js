@@ -128,6 +128,9 @@ const Login = () => {
                     />
 
                 </form>
+                <div className='text-center'>
+                    <a href='/nuevacuenta' className='text-white'>No tienes cuenta? Registrate!</a>
+                </div>
             </div>
           </div>
         </Layout>
