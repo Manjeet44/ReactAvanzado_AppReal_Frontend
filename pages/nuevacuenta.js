@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useMutation, gql } from '@apollo/client';
+import Link from 'next/link';
 
 const NUEVA_CUENTA = gql`
     mutation nuevoUsuario($input: UsuarioInput) {
@@ -178,9 +179,9 @@ const NuevaCuenta = () => {
                         />
 
                     </form>
-                    <div className='text-center'>
-                        <a href='/login' className='text-white'>Ya tienes cuenta? Iniciar Sesion!</a>
-                    </div>
+                    <Link href='/login' className='text-center'>
+                        <a  className='text-white'>Ya tienes cuenta? Iniciar Sesion!</a>
+                    </Link>
                 </div>
             </div>
         </Layout>
