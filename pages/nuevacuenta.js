@@ -179,9 +179,12 @@ const NuevaCuenta = () => {
                         />
 
                     </form>
-                    <Link href='/login' className='text-center'>
-                        <a  className='text-white'>Ya tienes cuenta? Iniciar Sesion!</a>
-                    </Link>
+                    <div className='text-center'>
+                        <Link href='/login' className=''>
+                            <a  className='text-white'>Ya tienes cuenta? Iniciar Sesion!</a>
+                        </Link>
+                    </div>
+                    
                 </div>
             </div>
         </Layout>
